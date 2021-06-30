@@ -1,0 +1,1 @@
+::1 - - [30/Jun/2021:20:09:38 +0000] "GET /api/alarms?page=1000&limit=100 HTTP/1.1" 200 7102 "-" "PostmanRuntime/7.28.1"

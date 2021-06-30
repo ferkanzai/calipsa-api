@@ -1,10 +1,17 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
 
 const appRouter = require("./routes");
 
 const app = express();
+
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "../logs/access.log"),
+  { flags: "a" }
+);
 
 const configApp = (app) => {
   app.use(
@@ -17,7 +24,7 @@ const configApp = (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 
-  app.use(morgan("combined"));
+  app.use(morgan("combined", { stream: accessLogStream }));
 
   app.use("/api", appRouter);
 
