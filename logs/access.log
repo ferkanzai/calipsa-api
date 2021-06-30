@@ -1,1 +1,8 @@
 ::1 - - [30/Jun/2021:20:09:38 +0000] "GET /api/alarms?page=1000&limit=100 HTTP/1.1" 200 7102 "-" "PostmanRuntime/7.28.1"
+::1 - - [30/Jun/2021:20:16:22 +0000] "GET /api/api-key HTTP/1.1" 500 58 "-" "PostmanRuntime/7.28.1"
+::1 - - [30/Jun/2021:20:17:11 +0000] "GET /api/api-key HTTP/1.1" - - "-" "PostmanRuntime/7.28.1"
+::1 - - [30/Jun/2021:20:17:52 +0000] "GET /api/api-key HTTP/1.1" - - "-" "PostmanRuntime/7.28.1"
+::1 - - [30/Jun/2021:20:18:40 +0000] "GET /api/api-key HTTP/1.1" 200 30 "-" "PostmanRuntime/7.28.1"
+::1 - - [30/Jun/2021:20:19:05 +0000] "GET /api/api-key HTTP/1.1" 200 16 "-" "PostmanRuntime/7.28.1"
+::1 - - [30/Jun/2021:20:19:10 +0000] "GET /api/api-key HTTP/1.1" 200 20 "-" "PostmanRuntime/7.28.1"
+::1 - - [30/Jun/2021:20:21:35 +0000] "GET /api/api-key HTTP/1.1" 200 35 "-" "PostmanRuntime/7.28.1"
