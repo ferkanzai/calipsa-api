@@ -1,8 +1,9 @@
 const router = require("express").Router();
+const { authApiKey } = require("../../middlewares/auth");
 
 const alarms = require("../../../data.1625071215.json").alarms;
 
-router.get("/", (req, res, next) => {
+router.get("/", authApiKey, (req, res, next) => {
   let { page = 1, limit = 25 } = req.query;
 
   page = Number(page);
