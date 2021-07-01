@@ -4,17 +4,19 @@ const { authApiKey } = require("../../middlewares/auth");
 const alarms = require("../../../data.1625071215.json").alarms;
 
 router.get("/", authApiKey, (req, res, next) => {
-  let { page = 1, limit = 25, locationId, outcome, before, after } = req.query;
+  let { page = 1, limit, locationId, outcome, from, to } = req.query;
 
   page = Number(page);
-  limit = Number(limit);
-  locationId = Number(locationId);
+  limit = limit !== "undefined" ? Number(limit) : 25;
+  from = from !== "undefined" ? from : undefined;
+  to = to !== "undefined" ? to : undefined;
 
   const offset = page * limit - limit;
 
   let alarmsPaginated = alarms;
 
   if (locationId) {
+    locationId = Number(locationId);
     alarmsPaginated = alarmsPaginated.filter(
       (alarm) => alarm.location === locationId
     );
@@ -24,15 +26,15 @@ router.get("/", authApiKey, (req, res, next) => {
     alarmsPaginated = alarmsPaginated.filter((alarm) => alarm.outcome === true);
   }
 
-  if (before) {
+  if (from) {
     alarmsPaginated = alarmsPaginated.filter(
-      (alarm) => new Date(alarm.timestamp) < new Date(before)
+      (alarm) => new Date(alarm.timestamp) > new Date(from)
     );
   }
 
-  if (after) {
+  if (to) {
     alarmsPaginated = alarmsPaginated.filter(
-      (alarm) => new Date(alarm.timestamp) > new Date(after)
+      (alarm) => new Date(alarm.timestamp) < new Date(to)
     );
   }
 
