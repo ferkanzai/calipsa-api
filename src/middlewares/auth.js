@@ -5,7 +5,7 @@ const authApiKey = (req, _res, next) => {
 
   console.log(key);
 
-  key = "undefined" ? undefined : key;
+  key = key === "undefined" ? undefined : key;
 
   try {
     if (!key) {
