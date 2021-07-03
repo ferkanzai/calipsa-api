@@ -10,6 +10,7 @@ router.get("/", authApiKey, (req, res, next) => {
   limit = limit !== "undefined" ? Number(limit) : 25;
   from = from !== "undefined" ? from : undefined;
   to = to !== "undefined" ? to : undefined;
+  outcome = "true" ? true : false;
 
   const offset = page * limit - limit;
 
