@@ -3,8 +3,6 @@ const apiKeyCache = require("../utils/apiKey");
 const authApiKey = (req, _res, next) => {
   let { key } = req.query;
 
-  console.log(key);
-
   key = key === "undefined" ? undefined : key;
 
   try {
