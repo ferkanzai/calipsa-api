@@ -10,7 +10,7 @@ router.get("/", authApiKey, (req, res, next) => {
   limit = limit !== "undefined" ? Number(limit) : 25;
   from = from !== "undefined" ? from : undefined;
   to = to !== "undefined" ? to : undefined;
-  outcome = "true" ? true : false;
+  outcome = outcome === "true" ? true : outcome === "false" ? false : undefined;
 
   const offset = page * limit - limit;
 
@@ -23,8 +23,14 @@ router.get("/", authApiKey, (req, res, next) => {
     );
   }
 
-  if (outcome) {
+  if (outcome === true) {
     alarmsPaginated = alarmsPaginated.filter((alarm) => alarm.outcome === true);
+  }
+
+  if (outcome === false) {
+    alarmsPaginated = alarmsPaginated.filter(
+      (alarm) => alarm.outcome === false
+    );
   }
 
   if (from) {
