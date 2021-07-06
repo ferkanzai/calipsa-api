@@ -3,7 +3,8 @@ const { authApiKey } = require("../../middlewares/auth");
 
 const alarms = require("../../../data.1625071215.json").alarms;
 
-router.get("/", authApiKey, (req, res, next) => {
+router.use("/", authApiKey, (req, res, next) => {
+  console.log(res.query);
   let { page = 1, limit, locationId, outcome, from, to } = req.query;
 
   page = Number(page);
